@@ -1,9 +1,9 @@
 // Function Data
 
 export interface SignInData {
-    email:                  string;
-    password:               string;
-    userType?:              string;
+    user: {
+      userName: string, ng_password: string
+    }
 }
 
 export interface RegisterData {

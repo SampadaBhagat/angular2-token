@@ -181,10 +181,7 @@ export class Angular2TokenService implements CanActivate {
         else
             this.atCurrentUserType = this.getUserTypeByName(signInData.userType);
 
-        let body = JSON.stringify({
-            email:      signInData.email,
-            password:   signInData.password
-        });
+        let body = JSON.stringify(signInData);
 
         let observ = this.post(this.getUserPath() + this.atOptions.signInPath, body);
 

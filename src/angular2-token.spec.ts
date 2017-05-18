@@ -33,8 +33,9 @@ describe('Angular2TokenService', () => {
 	});
 
 	let signInData: SignInData = {
-		email: 'test@test.de',
-		password: 'password'
+		user: {
+			userName: 'test@test.de', ng_password: 'password'
+		}
 	}
 
 	let registerData: RegisterData = {
@@ -138,7 +139,7 @@ describe('Angular2TokenService', () => {
 		);
 
 		tokenService.init({ apiPath: 'myapi', signInPath: 'myauth/mysignin' });
-		tokenService.signIn(signInData.email, signInData.password);
+		tokenService.signIn(signInData);
 	}));
 
 	it('signOut should send to configured path', inject([Angular2TokenService, MockBackend], (tokenService, mockBackend) => {
@@ -239,7 +240,7 @@ describe('Angular2TokenService', () => {
 		);
 
 		tokenService.init();
-		tokenService.signIn(signInData.email, signInData.password);
+		tokenService.signIn(signInData);
 
 		expect(localStorage.getItem('accessToken')).toEqual(accessToken);
 		expect(localStorage.getItem('client')).toEqual(client);
